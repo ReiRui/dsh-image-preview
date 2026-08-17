@@ -39,6 +39,13 @@ dsh plugin --profile web add "github:ReiRui/dsh-image-preview#main"
 
 也可以直接访问 `http://127.0.0.1:3080/preview/<name>` 查看。
 
+## AI 使用提示（给 agent 的约定）
+
+- **必须调用 `preview_image` 工具**，禁止手动把文件复制进 `~/.dsh/preview`：新会话的文件沙箱默认是 `workspace-write`，AI 的文件工具写不进预览目录（会报"目录出错"）。工具内部不受该沙箱限制。
+- 工具返回的 `url` 字段是**唯一有效**的 URL，AI 应原样内嵌（`![alt](url)`），不要自行拼接或猜文件名。
+- 通过工具复制的文件名为 `8位随机-原名`（如 `7faf2295-theme-gallery.png`），这是与手动复制区分的特征。
+- 工具返回 `ok:false` 时，把 `error` 原样报告给用户（文件不存在 / 类型不支持等）。
+
 ## 安全（自审声明）
 
 - **零依赖、零安装期脚本**：只依赖 node 内置模块和 `ctx`；不联网、不读凭据、不起子进程、无 eval。
