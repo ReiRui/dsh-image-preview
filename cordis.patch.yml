@@ -1,0 +1,12 @@
+# dsh-image-preview bundle patch: mount the plugin row on the host plane.
+# The route and tool register onto services the web profile already mounts
+# (webServer, tools); absent either, the plugin degrades gracefully.
+- insert:
+    - id: image-preview
+      name: 'dsh-image-preview'
+      config:
+        # Served directory for preview images; override via the profile's
+        # cordis.patch.yml if you want a project-local directory instead.
+        root: !!js dshHomePath('preview')
+        # URL prefix on the web server; keep it short and static.
+        prefix: /preview
