@@ -1,0 +1,4 @@
+# dsh-image-preview — repo-local ignores
+node_modules/
+*.log
+.DS_Store
