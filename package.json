@@ -1,0 +1,29 @@
+{
+  "name": "dsh-image-preview",
+  "version": "0.1.0",
+  "description": "Local image hosting for DeepSeek Harness: serves images from a preview directory over the web profile's own HTTP server so chat messages can render them inline, plus a preview_image tool that stages an existing local image and returns its URL.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReiRui/dsh-image-preview.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}
